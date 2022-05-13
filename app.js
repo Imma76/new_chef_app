@@ -1,20 +1,22 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
 import express from 'express';
-import { chefsList, deleteChef, findById } from './chefs_list.js';
+import routes from './routes/index.route.js';
+import morgan from 'morgan';
+// import middlewares from './middlewares/index.js';
 
 const app = express();
 
+// middlewares(app);
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.get('/', (req, res) => {
-  res.status(200).json({ status: 'sucess', chefsList });
-});
+app.use(morgan('dev'));
 
-app.get('/chef_list', (req, res) => {
-  res.status(200).json({ status: 'sucess', chefsList });
-});
-
+// middleware
+app.use(routes);
+/*
 app.post('/new_chef', (req, res) => {
   const {
     id, name, type_of_food, location
@@ -103,6 +105,7 @@ app.delete('/delete_chef', (req, res) => {
   // const newList = chefsList.filter((chefs) =>  chefs.id !== id)
   return res.json({ status: 'sucess', message: 'chef deleted sucessfully', data: result });
 });
+*/
 
 app.listen(2000, () => {
   console.log('server is listening on port 2000');

@@ -7,3 +7,4 @@ export const deleteChef = (id) => {
 };
 
 export const findById = (id) => chefsList.filter((chef) => id === chef.id);
+
