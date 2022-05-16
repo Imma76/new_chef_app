@@ -5,7 +5,7 @@ class UserController {
   }
 
   update(req, res) {
-    res.send(req.params.id)
+    res.send(req.params.id);
   }
 }
 
