@@ -2,20 +2,13 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
 import express from 'express';
-import routes from './routes/index.route.js';
-import morgan from 'morgan';
-// import middlewares from './middlewares/index.js';
+ import middlewares from './middlewares/index.js';
 
 const app = express();
 
-// middlewares(app);
+middlewares(app);
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(morgan('dev'));
 
-// middleware
-app.use(routes);
 /*
 app.post('/new_chef', (req, res) => {
   const {
