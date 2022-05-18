@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable class-methods-use-this */
 import chefService from '../services/chef.service.js';
+import { Chef } from '../models/chef.model.js';
 
 class ChefController {
   createChef(req, res) {

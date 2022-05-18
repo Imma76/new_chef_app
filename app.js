@@ -2,7 +2,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
 import express from 'express';
+
  import middlewares from './middlewares/index.js';
+
 
 const app = express();
 
@@ -100,6 +102,8 @@ app.delete('/delete_chef', (req, res) => {
 });
 */
 
-app.listen(2000, () => {
-  console.log('server is listening on port 2000');
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log('server is listening on port', PORT);
 });

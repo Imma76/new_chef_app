@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 // const { MongoClient } = require('mongodb').MongoClient;
 
-const url = 'mongodb+srv://Emma:SpC9Qvv4luueqBPY@cluster0.kx41p.mongodb.net/?retryWrites=true&w=majority';
+const url = process.env.MONGODB_URI;
 
 const database = () => {
   mongoose.connect(url)

@@ -6,8 +6,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon app.js",
+    "start": "node -r dotenv/config app.js",
+    "dev": "nodemon -r dotenv/config app.js",
     "lint": "npx eslint ./*.js --fix"
   },
   "author": "",
@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
     "handlebars": "^4.7.7",
