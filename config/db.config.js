@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 // const { MongoClient } = require('mongodb').MongoClient;
 
-const url = process.env.MONGODB_URI;
+const url = process.env.DATABASE_URI;
 
 const database = () => {
   mongoose.connect(url)
@@ -14,4 +14,4 @@ const database = () => {
       throw new Error(err);
     });
 };
-export default  database;
+export default database;

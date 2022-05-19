@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { chefsList, deleteChefById, findById } from '../models/chef.model.js';
+import { chefsList, deleteChefById, findById, Chef } from '../models/chef.model.js';
 
 const create = (id, name, type_of_food, location) => {
   const newchef = {
@@ -14,7 +14,7 @@ const create = (id, name, type_of_food, location) => {
     return false;
   }
 
-  chefsList.push(newchef);
+  Chef.create(newchef);
   return true;
 };
 

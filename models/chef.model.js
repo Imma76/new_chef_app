@@ -4,16 +4,26 @@ import { mongoose } from 'mongoose';
 export let chefsList = [];
 
 export const chefSchema = new mongoose.Schema({
-  fullName: {
+  name: {
     type: String,
-    required: 'This field is required'
+    required: true
   },
-  email: {
+  location: {
     type: String,
-    required: 'This field is required'
+    required: true
+  },
+  id: {
+    type: Number,
+    required: true
+  },
+  type_of_food: {
+    type: Array,
+    required: true
   }
 });
 export const Chef = mongoose.model('Chef', chefSchema);
+
+
 
 export const deleteChefById = (id) => {
   chefsList = chefsList.filter((chefs) => chefs.id !== id);
