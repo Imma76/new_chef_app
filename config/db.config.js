@@ -1,4 +1,9 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+// const { MongoClient } = require('mongodb').MongoClient;
+
+dotenv.config();
 
 // const { MongoClient } = require('mongodb').MongoClient;
 
