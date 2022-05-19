@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 // const { MongoClient } = require('mongodb').MongoClient;
 
-const url = 'mongodb+srv://Emma:SpC9Qvv4luueqBPY@cluster0.kx41p.mongodb.net/?retryWrites=true&w=majority';
+dotenv.config();
 
 const database = () => {
-  mongoose.connect(url)
+  mongoose.connect(process.env.DATABASE_URI)
     .then(() => {
       console.log('connected to database');
     })
@@ -14,4 +15,4 @@ const database = () => {
       throw new Error(err);
     });
 };
-export default  database;
+export default database;

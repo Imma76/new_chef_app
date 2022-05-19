@@ -10,7 +10,7 @@ const middlewares = (app) => {
 
   // middleware
   app.use(routes);
-  database();
+  database(); 
 };
 
 export default middlewares;
