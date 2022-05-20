@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import routes from '../routes/index.route.js';
 import database from '../config/db.config.js';
+import handleError from './errors.middleware.js';
 
 const middlewares = (app) => {
   app.use(express.urlencoded({ extended: false }));
@@ -10,7 +11,10 @@ const middlewares = (app) => {
 
   // middleware
   app.use(routes);
-  database(); 
+  database();
+
+
+  app.use(handleError);
 };
 
 export default middlewares;

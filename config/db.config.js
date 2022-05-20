@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// const { MongoClient } = require('mongodb').MongoClient;
+
 const database = () => {
   mongoose.connect(process.env.DATABASE_URI)
     .then(() => {
