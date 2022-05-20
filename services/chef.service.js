@@ -1,51 +1,53 @@
 /* eslint-disable camelcase */
-import { chefsList, deleteChefById, findById, Chef } from '../models/chef.model.js';
+import { Chef } from '../models/chef.model.js';
 
-const create = (id, name, type_of_food, location) => {
-  const newchef = {
-    id,
-    name,
-    type_of_food,
-    location
-  };
-  const checkId = chefsList.filter((chef) => chef.id === id);
+/**
+ * @description ...
+ * @param {object} newChefData chef data
+ * @returns {object} the newly created chef
+ */
+const create = async (newChefData = {}) => {
+  // try {
+  const newChef = new Chef(newChefData);
+  // const newChef = await Chef.create(newChefData);
 
-  if (checkId.length !== 0) {
-    return false;
-  }
+  await newChef.save();
 
-  Chef.create(newchef);
-  return true;
+  return newChef;
 };
 
-const getAllChefs = () => chefsList;
-
-const findChefById = (id) => findById(id);
-
-const editChefById = (name, location, type_of_food, id) => {
-  chefsList.forEach((chefs) => {
-    if (chefs.id === id) {
-      if (name) {
-        chefs.name = name;
-      }
-      if (location) {
-        chefs.location = location;
-      }
-      if (type_of_food) {
-        chefs.type_of_food = type_of_food;
-      }
-    }
+const getAllChefs = async () => {
+  const allChef = await Chef.find({}).then((chef) => chef).catch((err) => {
+    console.log(err);
   });
+
+  return allChef;
 };
 
-const deleteChef = (id) => deleteChefById(id);
+const findChefByName = async (name) => await Chef.findOne({ name }).then((chef) => {
+  
+  return chef;
+}).catch((err) => console.log(err));
+
+const findChefById = async (_id) => await Chef.findOne({ _id }).then((chef) => {
+
+  return chef;
+}).catch((err) => console.log(err));
+
+const editChefById = async (data) => {
+  await Chef.updateOne({ _id: data.id }, { $set: { name: data.name } });
+};
+
+const deleteChef = async (id) => await Chef.deleteOne({ _id: id })
+  .then((value))
+  .catch((err) => console.log(err));
 
 export default {
   create,
-  find: getAllChefs,
-  findChefById,
+  findChefByName,
   getAllChefs,
   editChefById,
-  deleteChef
+  deleteChef,
+  findChefById
 
 };
